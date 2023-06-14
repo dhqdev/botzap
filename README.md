@@ -1,6 +1,3 @@
-# botzap
-Create a bot to send massagers for my contacts.
-
 from selenium import webdriver
 import time
 
