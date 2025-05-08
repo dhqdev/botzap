@@ -1,32 +1,50 @@
-from selenium import webdriver
-import time
+🤖 WhatsAppBot com Selenium
+Este projeto é um bot simples que automatiza o envio de mensagens em grupos do WhatsApp Web utilizando Python e Selenium. Ele é útil para lembretes, recados automáticos ou testes de automação com mensagens.
 
-class WhatsAppBot:
-    def __init__(self):
-        self.mensagem = "teste"
-        self.grupos = ["Lembrete e coisas"]
-        options = webdriver.ChromeOptions()
-        options.add_argument("lang=pt-br")
-        self.driver = webdriver.Chrome(executable_path='/caminho/para/chromedriver.exe')
+🚀 Funcionalidades
+Acessa o WhatsApp Web automaticamente.
 
-    def EnviarMensagens(self):
-        self.driver.get('https://web.whatsapp.com')
-        time.sleep(30)
-        
-        for grupo in self.grupos:
-            grupo = self.driver.find_element_by_xpath(f"//span[@title='{grupo}']")
-            time.sleep(3)
-            grupo.click()
-            
-            chat_box = self.driver.find_element_by_class_name('_2xy_p _3XKXx')
-            time.sleep(3)
-            chat_box.click()
-            chat_box.send_keys(self.mensagem)
-            
-            botao_enviar = self.driver.find_element_by_xpath("//span[@data-icon='send']")
-            time.sleep(3)                                 
-            botao_enviar.click()
-            time.sleep(3)   
+Aguarda o login manual via QR Code.
 
-bot = WhatsAppBot()
-bot.EnviarMensagens()
+Procura grupos pelo nome.
+
+Envia uma mensagem pré-definida para cada grupo listado.
+
+🛠️ Como usar
+1. Pré-requisitos
+Python 3.x instalado
+
+Google Chrome instalado
+
+ChromeDriver compatível com sua versão do Chrome
+
+Instale o Selenium:
+
+bash
+Copiar
+Editar
+pip install selenium
+2. Configure o caminho do ChromeDriver
+No código, atualize a linha abaixo com o caminho correto do seu chromedriver.exe:
+
+python
+Copiar
+Editar
+self.driver = webdriver.Chrome(executable_path='/caminho/para/chromedriver.exe')
+3. Customize a mensagem e os grupos
+Você pode mudar a mensagem e os grupos no __init__ da classe:
+
+python
+Copiar
+Editar
+self.mensagem = "teste"
+self.grupos = ["Lembrete e coisas"]
+4. Execute o bot
+Depois de configurar, execute o script:
+
+python
+Copiar
+Editar
+python nome_do_arquivo.py
+O bot abrirá o WhatsApp Web. Escaneie o QR Code com seu celular, e ele começará a enviar as mensagens automaticamente.
+
